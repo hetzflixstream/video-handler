@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video Player</title>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <!-- Include Video.js JavaScript library -->
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+</head>
+
+<body>
+
+    <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="auto" height="auto"
+        data-setup="{}">
+        <!-- Source will be set by JavaScript -->
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+
+    <script>
+        // Function to parse query parameters from the URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Getting video name from URL query parameter
+    const videoName = getQueryParam('video');
+    if (!videoName) {
+        alert("No video specified.");
+        // Redirect user or display a message indicating that no video was specified
+    } else {
+        const videoPath = "uploads/" + encodeURIComponent(videoName);
+        const videoExtension = videoPath.split('.').pop();
+        const video = document.getElementById('my-video');
+
+        // Setting the source for the video player
+        video.innerHTML = `<source src="${videoPath}" type="video/${videoExtension}">`;
+        videojs('my-video');
+    }
+    </script>
+
+    <style>
+        /* Ensure video fills the entire screen, adjust as necessary */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .video-js {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+
+</body>
+
+</html>
