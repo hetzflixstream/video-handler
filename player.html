@@ -2,24 +2,24 @@
 <html>
 <head>
     <title>Video Player</title>
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-    <!-- Include Video.js JavaScript library -->
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <link href="https://cdn.plyr.io/3.6.8/plyr.css" rel="stylesheet">
+    <!-- Include Plyr.js JavaScript library -->
+    <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
 </head>
 <body>
 
 <video
     id="my-video"
-    class="video-js vjs-big-play-centered"
+    class="plyr"
     controls
     preload="auto"
     width="auto"
     height="auto"
     data-setup="{}">
     <!-- Source will be set by JavaScript -->
-    <p class="vjs-no-js">
+    <p class="plyr__message">
       To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+      <a href="https://plyr.io/" target="_blank">supports HTML5 video</a>
     </p>
 </video>
 
@@ -42,7 +42,7 @@
 
         // Setting the source for the video player
         video.innerHTML = `<source src="${videoPath}" type="video/${videoExtension}">`;
-        videojs('my-video');
+        const player = new Plyr('#my-video');
     }
 </script>
 
@@ -52,7 +52,7 @@
         height: 100%;
         margin: 0;
     }
-    .video-js {
+    .plyr {
         width: 100vw;
         height: 100vh;
     }
