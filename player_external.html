@@ -36,7 +36,7 @@
         alert("No video specified.");
         // Redirect user or display a message indicating that no video was specified
     } else {
-        const videoPath = "https://web.archive.org/web/" + encodeURIComponent(videoName);
+        const videoPath = encodeURIComponent(videoName);
         const videoExtension = videoPath.split('.').pop();
         const video = document.getElementById('my-video');
 
